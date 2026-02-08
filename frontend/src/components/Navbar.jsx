@@ -17,8 +17,7 @@ export default function Navbar() {
     "Home",
     "About",
     "Products",
-    "Infrastructure",
-    "Dealers",
+    "Distributors",
     "Contact",
   ];
 
@@ -63,7 +62,7 @@ export default function Navbar() {
             <button className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em] text-white rounded-full border border-green-500/70 overflow-hidden group">
               <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
               <span className="relative z-10 group-hover:text-black transition">
-                Get Quote
+                Become Distributor
               </span>
             </button>
           </div>
