@@ -73,8 +73,8 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4 text-gray-300">
-              <li>Email: sales@techagro.com</li>
-              <li>Phone: +91 XXXXX XXXXX</li>
+              <li>Email: info@techagro.co.in</li>
+              <li>Phone: +91 99923 32017</li>
               <li>India</li>
             </ul>
           </div>
@@ -88,7 +88,7 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} Tech Agro. All rights reserved.
           </p>
-          <p>Powered by Excellence Web Services</p>
+          <p>Powered by Foxstride Media Excellence Web Services</p>
 
           <div className="flex gap-8 uppercase tracking-widest text-xs">
             <span className="hover:text-white transition cursor-pointer">

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
 import './App.css'
 // import About from "./pages/About";
 // import Products from "./pages/Products";
@@ -12,6 +13,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/products/:power" element={<ProductDetails />} />
         {/* <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
