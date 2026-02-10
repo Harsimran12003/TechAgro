@@ -10,7 +10,6 @@ export default function Footer() {
       <div className="absolute bottom-[-200px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-500/10 blur-[240px]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 pt-32 pb-16">
-
         {/* TOP FOOTER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -21,11 +20,7 @@ export default function Footer() {
         >
           {/* BRAND */}
           <div>
-            <img
-              src="/logo.png"
-              alt="Tech Agro"
-              className="h-14 mb-6"
-            />
+            <img src="/logo.png" alt="Tech Agro" className="h-14 mb-6" />
             <p className="text-gray-400 leading-relaxed max-w-sm">
               Tech Agro is a premium agro-machinery manufacturer committed to
               precision engineering, durability, and future-ready agricultural
@@ -85,10 +80,18 @@ export default function Footer() {
 
         {/* BOTTOM FOOTER */}
         <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} Tech Agro. All rights reserved.</p>
           <p>
-            © {new Date().getFullYear()} Tech Agro. All rights reserved.
+            Powered by{" "}
+            <a
+              href="https://www.excellencegroupofinstitutes.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" hover:text-white transition  "
+            >
+              Excellence Group of Institutes
+            </a>
           </p>
-          <p>Powered by Foxstride Media Excellence Web Services</p>
 
           <div className="flex gap-8 uppercase tracking-widest text-xs">
             <span className="hover:text-white transition cursor-pointer">

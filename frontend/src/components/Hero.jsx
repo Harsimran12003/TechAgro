@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen pt-40 pb-10 flex items-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen pt-40 pb-12 flex items-center overflow-hidden"
+    >
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#183d2b,_#000)]"></div>
 
@@ -36,16 +39,24 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="mt-14 flex flex-wrap gap-6">
-            <button className="relative px-10 py-3 rounded-full bg-green-500 text-black uppercase tracking-[0.25em] text-xs font-medium overflow-hidden group">
+            {/* Explore Products */}
+            <a
+              href="#products"
+              className="relative px-10 py-3 rounded-full bg-green-500 text-black uppercase tracking-[0.25em] text-xs font-medium overflow-hidden group"
+            >
               <span className="absolute inset-0 bg-black scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
               <span className="relative z-10 group-hover:text-green-500 transition">
                 Explore Products
               </span>
-            </button>
+            </a>
 
-            <button className="px-10 py-3 rounded-full border border-green-500/70 text-white uppercase tracking-[0.25em] text-xs hover:bg-green-500 hover:text-black transition">
+            {/* Get a Quote */}
+            <a
+              href="/contact"
+              className="px-10 py-3 rounded-full border border-green-500/70 text-white uppercase tracking-[0.25em] text-xs hover:bg-green-500 hover:text-black transition"
+            >
               Get a Quote
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -60,7 +71,7 @@ export default function Hero() {
           <div className="absolute w-[500px] h-[500px] bg-green-500/20 blur-[180px] rounded-full"></div>
 
           <motion.video
-            src="/video.mp4" 
+            src="/video.mp4"
             autoPlay
             loop
             muted

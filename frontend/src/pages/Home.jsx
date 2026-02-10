@@ -6,6 +6,7 @@ import Products from "../components/Products";
 import DistributorCTA from "../components/DistributorCTA";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -15,9 +16,10 @@ export default function Home() {
       <About />
       <AboutTimeline />
       <Products />
-      <DistributorCTA />
+      
       <ContactForm />
       <Footer />
+      <WhatsAppButton />
 
     </div>
   );

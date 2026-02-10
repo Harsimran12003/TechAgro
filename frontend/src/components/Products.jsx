@@ -27,7 +27,11 @@ const products = [
 
 export default function Products() {
   return (
-    <section className="relative py-40 bg-black overflow-hidden">
+    <section
+  id="products"
+  className="relative py-28 bg-black overflow-hidden"
+>
+
       {/* Background Atmosphere */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#102e22,_#000)]"></div>
 

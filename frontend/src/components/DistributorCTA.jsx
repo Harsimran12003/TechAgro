@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 export default function DistributorCTA() {
   return (
-    <section className="relative py-40 bg-black overflow-hidden">
+   <section
+  id="distributors"
+  className="relative py-40 bg-black overflow-hidden"
+>
+
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#123d2a,_#000)]"></div>
 

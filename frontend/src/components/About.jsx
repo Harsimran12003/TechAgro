@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section className="relative py-40 bg-black overflow-hidden">
+    <section id="about" className="relative py-28 bg-black overflow-hidden">
       {/* Background Atmosphere */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_#0f2e20,_#000)]"></div>
 
@@ -11,7 +11,6 @@ export default function About() {
       <div className="absolute bottom-[-200px] left-[-200px] w-[500px] h-[500px] bg-red-600/10 blur-[220px]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-
         {/* LEFT — STORY */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -29,16 +28,17 @@ export default function About() {
           </h2>
 
           <p className="mt-10 text-gray-300 text-lg leading-relaxed max-w-xl">
-            <span className="text-white font-medium">Tech Agro</span> was founded
-            in <span className="text-green-400">2013</span> with a clear vision —
-            to engineer agricultural machinery that enhances productivity,
-            reliability, and long-term value for farmers and agribusinesses.
+            <span className="text-white font-medium">Tech Agro</span> was
+            founded in <span className="text-green-400">2013</span> with a clear
+            vision — to engineer agricultural machinery that enhances
+            productivity, reliability, and long-term value for farmers and
+            agribusinesses.
           </p>
 
           <p className="mt-6 text-gray-300 text-lg leading-relaxed max-w-xl">
             The company was formally incorporated in{" "}
-            <span className="text-green-400">2026</span>, marking a new chapter of
-            expansion, technological advancement, and global ambition in the
+            <span className="text-green-400">2026</span>, marking a new chapter
+            of expansion, technological advancement, and global ambition in the
             agro-manufacturing sector.
           </p>
         </motion.div>
@@ -57,22 +57,16 @@ export default function About() {
               Leadership
             </p>
 
-            <h3 className="text-2xl font-medium mb-6">
-              Co-Founders & CEOs
-            </h3>
+            <h3 className="text-2xl font-medium mb-6">Co-Founders & CEOs</h3>
 
             <div className="space-y-4 text-gray-300 text-lg">
               <p>
-                <span className="text-white font-medium">
-                  Deepak Dhull
-                </span>{" "}
-                — Co-Founder & CEO
+                <span className="text-white font-medium">Deepak Dhull</span> —
+                Co-Founder & CEO
               </p>
               <p>
-                <span className="text-white font-medium">
-                  Sunil Dhull
-                </span>{" "}
-                — Co-Founder & CEO
+                <span className="text-white font-medium">Sunil Dhull</span> —
+                Co-Founder & CEO
               </p>
             </div>
           </div>

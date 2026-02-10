@@ -13,13 +13,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    "Home",
-    "About",
-    "Products",
-    "Distributors",
-    "Contact",
-  ];
+  const navLinks = ["Home", "About", "Products", "Distributors", "Contact"];
 
   return (
     <>
@@ -34,15 +28,14 @@ export default function Navbar() {
         }`}
       >
         <nav className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-          
           {/* LOGO */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <a href="/" className="flex items-center gap-3 group">
             <img
               src="/logo.png"
               alt="TechAgro"
               className="h-14 md:h-20 w-27 transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(34,197,94,0.35)]"
             />
-          </div>
+          </a>
 
           {/* DESKTOP MENU */}
           <ul className="hidden md:flex items-center gap-12">
@@ -51,7 +44,18 @@ export default function Navbar() {
                 key={link}
                 className="relative text-[13px] uppercase tracking-[0.25em] text-gray-300 hover:text-white transition duration-300 group"
               >
-                <a href={`#${link.toLowerCase()}`}>{link}</a>
+                <a
+                  href={
+                    link === "Distributors"
+                      ? "/distributors"
+                      : link === "Contact"
+                        ? "/contact"
+                        : `#${link.toLowerCase()}`
+                  }
+                >
+                  {link}
+                </a>
+
                 <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-gradient-to-r from-green-500 to-green-300 transition-all duration-300 group-hover:w-full"></span>
               </li>
             ))}
@@ -59,12 +63,15 @@ export default function Navbar() {
 
           {/* CTA BUTTON */}
           <div className="hidden md:flex">
-            <button className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em] text-white rounded-full border border-green-500/70 overflow-hidden group">
+            <a
+              href="/distributors"
+              className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em] text-white rounded-full border border-green-500/70 overflow-hidden group"
+            >
               <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
               <span className="relative z-10 group-hover:text-black transition">
                 Become Distributor
               </span>
-            </button>
+            </a>
           </div>
 
           {/* MOBILE ICON */}
@@ -87,7 +94,13 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
+              href={
+                link === "Distributors"
+                  ? "/distributors"
+                  : link === "Contact"
+                    ? "/contact"
+                    : `#${link.toLowerCase()}`
+              }
               onClick={() => setOpen(false)}
               className="text-2xl uppercase tracking-[0.3em] text-gray-300 hover:text-green-500 transition"
             >
