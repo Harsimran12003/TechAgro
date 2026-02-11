@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 import ContactForm from "../components/ContactForm";
 
@@ -9,6 +10,7 @@ export default function Contact() {
       <Navbar />
 
       <ContactForm />
+      <WhatsAppButton />
 
       <Footer />
     </div>

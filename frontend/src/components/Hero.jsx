@@ -71,7 +71,7 @@ export default function Hero() {
           <div className="absolute w-[500px] h-[500px] bg-green-500/20 blur-[180px] rounded-full"></div>
 
           <motion.video
-            src="/video.mp4"
+            src="/video1.mp4"
             autoPlay
             loop
             muted

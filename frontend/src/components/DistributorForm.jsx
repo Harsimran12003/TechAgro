@@ -35,17 +35,13 @@ export default function DistributorForm() {
           className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 space-y-8"
         >
           {/* Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid  gap-8">
             <input
               type="text"
               placeholder="Full Name"
               className="input"
             />
-            <input
-              type="text"
-              placeholder="Company Name"
-              className="input"
-            />
+           
             <input
               type="email"
               placeholder="Email Address"
@@ -56,24 +52,10 @@ export default function DistributorForm() {
               placeholder="Phone Number"
               className="input"
             />
-            <input
-              type="text"
-              placeholder="City"
-              className="input"
-            />
-            <input
-              type="text"
-              placeholder="State"
-              className="input"
-            />
+            
           </div>
 
-          {/* Experience */}
-          <textarea
-            rows="4"
-            placeholder="Briefly describe your experience in agricultural machinery or related business"
-            className="input resize-none"
-          ></textarea>
+         
 
           {/* Submit */}
           <button

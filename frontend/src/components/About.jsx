@@ -65,7 +65,7 @@ export default function About() {
                 Co-Founder & CEO
               </p>
               <p>
-                <span className="text-white font-medium">Sunil Dhull</span> —
+                <span className="text-white font-medium">Sunil Kumar Punia</span> —
                 Co-Founder & CEO
               </p>
             </div>

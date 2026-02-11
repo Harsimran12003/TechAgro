@@ -2,8 +2,9 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContactForm from "../components/ContactForm";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const productData = {
   "88-bhp": {
@@ -156,6 +157,9 @@ export default function ProductDetails() {
   const { power } = useParams();
   const product = productData[power];
   const [activeImage, setActiveImage] = useState(product.images[0]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!product) {
     return <div className="text-white p-20">Product not found</div>;
@@ -240,6 +244,7 @@ export default function ProductDetails() {
         </div>
       </section>
       <ContactForm />
+      <WhatsAppButton />
 
       <Footer />
     </div>

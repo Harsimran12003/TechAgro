@@ -68,6 +68,10 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4 text-gray-300">
+              <li>
+                Address: VPO MUNDHAL, MANDHAHERI, SISAR LINK ROAD, NEAR NH-9,
+                HANSI, HISAR, HARYANA, 125033
+              </li>
               <li>Email: info@techagro.co.in</li>
               <li>Phone: +91 99923 32017</li>
               <li>India</li>

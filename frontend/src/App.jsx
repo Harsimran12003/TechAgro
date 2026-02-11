@@ -4,6 +4,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Distributors from "./pages/Distributors";
 import './App.css'
 import Contact from "./pages/Contact";
+import AboutPage from "./pages/AboutPage";
+import ProductsPage from "./pages/ProductsPage";
 
 
 export default function App() {
@@ -14,6 +16,8 @@ export default function App() {
         <Route path="/products/:power" element={<ProductDetails />} />
         <Route path="/distributors" element={<Distributors />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/products" element={<ProductsPage />} />
         {/* <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
