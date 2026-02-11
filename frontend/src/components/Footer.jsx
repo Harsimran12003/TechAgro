@@ -89,7 +89,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className=" hover:text-white transition  "
             >
-              Excellence Group of Institutes
+              Foxstride Media Excellence Web Services
             </a>
           </p>
 
