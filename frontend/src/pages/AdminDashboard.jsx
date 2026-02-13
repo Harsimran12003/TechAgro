@@ -27,14 +27,14 @@ export default function AdminDashboard() {
 
   /* Fetch distributors */
   useEffect(() => {
-    fetch("http://localhost:5000/api/distributors")
+    fetch("https://tech-agro-backend.vercel.app//api/distributors")
       .then((res) => res.json())
       .then((data) => setDistributors(data));
   }, []);
 
   /* Fetch orders */
   const fetchOrders = () => {
-    fetch("http://localhost:5000/api/orders")
+    fetch("https://tech-agro-backend.vercel.app//api/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   };
@@ -53,8 +53,8 @@ export default function AdminDashboard() {
 
     const method = editingId ? "PUT" : "POST";
     const url = editingId
-      ? `http://localhost:5000/api/orders/${editingId}`
-      : "http://localhost:5000/api/orders";
+      ? `https://tech-agro-backend.vercel.app//api/orders/${editingId}`
+      : "https://tech-agro-backend.vercel.app//api/orders";
 
     await fetch(url, {
       method,
@@ -84,7 +84,7 @@ export default function AdminDashboard() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/orders/${id}`, {
+    await fetch(`https://tech-agro-backend.vercel.app//api/orders/${id}`, {
       method: "DELETE",
     });
     fetchOrders();
