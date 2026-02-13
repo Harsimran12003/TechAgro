@@ -7,7 +7,7 @@ const products = [
     power: "88 BHP",
     description:
       "A compact yet powerful harvester engineered for efficiency, reliability, and consistent field performance.",
-    image: "./harvester-88-1.jpeg",
+    image: "./rice-1.png",
   },
   {
     title: "Multi Feeder Chain Harvester",

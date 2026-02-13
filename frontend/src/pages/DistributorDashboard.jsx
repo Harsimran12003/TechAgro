@@ -1,0 +1,120 @@
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { motion } from "framer-motion";
+
+export default function DistributorDashboard() {
+  const [distributor, setDistributor] = useState(null);
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
+  // Dummy order data (frontend only)
+  const orders = [
+    {
+      machine: "88 BHP Harvester",
+      date: "2026-02-01",
+      status: "Processing",
+    },
+    {
+      machine: "102 BHP Harvester",
+      date: "2026-01-18",
+      status: "Shipped",
+    },
+    {
+      machine: "Rice Transplanter 2ZG-6D",
+      date: "2026-01-05",
+      status: "Delivered",
+    },
+  ];
+
+  useEffect(() => {
+    const storedDistributor = localStorage.getItem("distributor");
+    if (storedDistributor) {
+      setDistributor(JSON.parse(storedDistributor));
+    }
+  }, []);
+
+  return (
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
+      <Navbar />
+
+      <section className="relative pt-40 pb-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#123d2a,_#000)]"></div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-8">
+
+          {/* Welcome Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="mb-16"
+          >
+            <p className="uppercase tracking-[0.4em] text-green-400 text-xs mb-4">
+              Distributor Dashboard
+            </p>
+
+            <h1 className="text-4xl md:text-5xl font-semibold">
+              Welcome,{" "}
+              <span className="text-green-400">
+                {distributor?.name || "Distributor"}
+              </span>
+            </h1>
+          </motion.div>
+
+          {/* Orders Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1 }}
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10"
+          >
+            <h2 className="text-2xl font-medium mb-8">
+              Machinery Orders
+            </h2>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-gray-400 uppercase text-xs tracking-widest">
+                    <th className="pb-4">Machinery</th>
+                    <th className="pb-4">Date of Order</th>
+                    <th className="pb-4">Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {orders.map((order, index) => (
+                    <tr
+                      key={index}
+                      className="border-b border-white/5 hover:bg-white/5 transition"
+                    >
+                      <td className="py-5">{order.machine}</td>
+                      <td>{order.date}</td>
+                      <td>
+                        <span
+                          className={`px-4 py-1 rounded-full text-xs uppercase tracking-widest ${
+                            order.status === "Delivered"
+                              ? "bg-green-500/20 text-green-400"
+                              : order.status === "Shipped"
+                              ? "bg-blue-500/20 text-blue-400"
+                              : "bg-yellow-500/20 text-yellow-400"
+                          }`}
+                        >
+                          {order.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}

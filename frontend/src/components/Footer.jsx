@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -29,25 +30,31 @@ export default function Footer() {
           </div>
 
           {/* QUICK LINKS */}
-          <div>
-            <h4 className="uppercase tracking-[0.3em] text-xs text-green-400 mb-6">
-              Company
-            </h4>
-            <ul className="space-y-4 text-gray-300">
-              <li className="hover:text-white transition cursor-pointer">
+          <ul className="space-y-4 text-gray-300">
+            <li>
+              <Link to="/about" className="hover:text-white transition">
                 About Us
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
+              </Link>
+            </li>
+            <li>
+              <Link to="/products" className="hover:text-white transition">
                 Products
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
-                Infrastructure
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/distributors"
+                className="hover:text-white transition"
+              >
+                Distributors
+              </Link>
+            </li>
+            <li>
+              <Link to="/distributors" className="hover:text-white transition">
                 Dealers
-              </li>
-            </ul>
-          </div>
+              </Link>
+            </li>
+          </ul>
 
           {/* PRODUCTS */}
           <div>
@@ -98,12 +105,16 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-8 uppercase tracking-widest text-xs">
-            <span className="hover:text-white transition cursor-pointer">
+            <Link to="/privacy-policy" className="hover:text-white transition">
               Privacy Policy
-            </span>
-            <span className="hover:text-white transition cursor-pointer">
-              Terms of Use
-            </span>
+            </Link>
+
+            <Link
+              to="/terms-and-conditions"
+              className="hover:text-white transition"
+            >
+              Terms & Conditions
+            </Link>
           </div>
         </div>
       </div>

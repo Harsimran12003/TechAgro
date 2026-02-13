@@ -2,8 +2,12 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
+import { useEffect } from "react";
 
 export default function AboutPage() {
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <div className="bg-black text-white overflow-x-hidden">
       <Navbar />

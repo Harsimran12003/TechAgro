@@ -8,11 +8,11 @@ import WhatsAppButton from "../components/WhatsAppButton";
 
 const products = [
   {
-    title: "Multi Feeder Chain Harvester",
-    power: "88 BHP",
+    title: "Rice Transplanter 2ZG-6D",
+    power: "24.2 BHP",
     description:
       "A compact yet powerful harvester engineered for efficiency, reliability, and consistent field performance.",
-    image: "/harvester-88-1.jpeg",
+    image: "/rice-1.png",
   },
   {
     title: "Multi Feeder Chain Harvester",

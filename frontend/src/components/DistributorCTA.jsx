@@ -53,19 +53,7 @@ export default function DistributorCTA() {
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
-          <button className="relative px-12 py-4 rounded-full bg-green-500 text-black uppercase tracking-[0.3em] text-xs font-medium overflow-hidden group">
-            <span className="absolute inset-0 bg-black scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-            <span className="relative z-10 group-hover:text-green-500 transition">
-              Apply as Distributor
-            </span>
-          </button>
-
-          <button className="px-12 py-4 rounded-full border border-green-500/70 text-white uppercase tracking-[0.3em] text-xs hover:bg-green-500 hover:text-black transition">
-            Contact Sales Team
-          </button>
-        </div>
+       
       </motion.div>
     </section>
   );

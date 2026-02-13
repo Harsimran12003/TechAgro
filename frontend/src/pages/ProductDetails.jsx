@@ -7,18 +7,62 @@ import ContactForm from "../components/ContactForm";
 import WhatsAppButton from "../components/WhatsAppButton";
 
 const productData = {
-  "88-bhp": {
-    title: "Multi Feeder Chain Harvester",
-    power: "88 BHP",
-    images: [
-      "/harvester-88-1.jpeg",
-      "/harvester-88-2.jpeg",
-      "/harvester-88-3.jpeg",
-    ],
+  "24.2-bhp": {
+    title: "Rice Transplanter 2ZG-6D",
+  power: "24.2 BHP",
+  images: [
+    "/rice-1.png",
+    "/rice-2.png",
+    "/rice-3.png",
+    "/rice-4.png",
+  ],
     specs: [
-      { label: "Model", value: "4LZ-6.0P" },
-      { label: "Structural Style", value: "Crawler-type full feeding model" },
-    ],
+    // Basic Info
+    { label: "Model", value: "2ZG-6D" },
+    { label: "Type", value: "Riding Type" },
+    { label: "Driving Model", value: "4-Wheel Drive" },
+    { label: "Dimensions (L×W×H)", value: "3090 × 2220 × 2580 mm" },
+    { label: "Weight", value: "790 kg" },
+
+    // Engine
+    { label: "Engine Brand", value: "YANMAR" },
+    { label: "Engine Model", value: "3TNM74-AFF" },
+    { label: "Engine Type", value: "Vertical in-line 4-cycle water-cooled diesel" },
+    { label: "Displacement", value: "0.993 L" },
+    { label: "Power", value: "24.2 HP" },
+    { label: "Rated Speed", value: "3600 r/min" },
+    { label: "Fuel Type", value: "Diesel" },
+    { label: "Fuel Tank Capacity", value: "34 L" },
+    { label: "Start Method", value: "Electric Start" },
+    { label: "Voltage", value: "12V" },
+    { label: "Battery Capacity", value: "45 Ah" },
+    { label: "Fuel Consumption", value: "2.2 – 5.6 kg/hm²" },
+
+    // Wheels & Movement
+    { label: "Wheel Type", value: "Rubber Tires with Thick Wheels" },
+    { label: "Front Wheel Size", value: "4650 × 95 mm" },
+    { label: "Rear Wheel Size", value: "Φ950 × 50 mm" },
+    { label: "Wheel Distance", value: "1200 mm" },
+    { label: "Steering Method", value: "Hydraulic" },
+    { label: "Transmission", value: "HST Stepless" },
+    { label: "Working Speed", value: "0 – 5.94 km/h" },
+    { label: "Ground Clearance", value: "500 mm" },
+
+    // Planting System
+    { label: "Planting Type", value: "Rotary Planting" },
+    { label: "Working Rows", value: "6 Rows" },
+    { label: "Row Spacing", value: "300 mm" },
+    { label: "Planting Spacing Options", value: "100, 120, 140, 160, 180, 210, 240 mm" },
+    { label: "Planting Depth", value: "10 – 55 mm" },
+    { label: "Adjustable Seeding", value: "20, 18, 16, 14" },
+    { label: "Horizontal Adjustable Depth", value: "8 – 18 mm" },
+
+    // Performance
+    { label: "Working Efficiency", value: "0.2 – 0.6 hm²/h" },
+
+    // Packing
+    { label: "Packing", value: "4 Sets in One 40ft HQ Container" }
+  ],
   },
 
   "102-bhp": {
