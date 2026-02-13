@@ -45,3 +45,16 @@ export const deleteOrder = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const getOrdersByDistributor = async (req, res) => {
+  try {
+    const { distributorId } = req.params;
+
+    const orders = await Order.find({ distributor: distributorId })
+      .populate("distributor", "name");
+
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

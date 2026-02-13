@@ -6,27 +6,10 @@ import { motion } from "framer-motion";
 export default function DistributorDashboard() {
   const [distributor, setDistributor] = useState(null);
   useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+    window.scrollTo(0, 0);
+  }, []);
 
-  // Dummy order data (frontend only)
-  const orders = [
-    {
-      machine: "88 BHP Harvester",
-      date: "2026-02-01",
-      status: "Processing",
-    },
-    {
-      machine: "102 BHP Harvester",
-      date: "2026-01-18",
-      status: "Shipped",
-    },
-    {
-      machine: "Rice Transplanter 2ZG-6D",
-      date: "2026-01-05",
-      status: "Delivered",
-    },
-  ];
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const storedDistributor = localStorage.getItem("distributor");
@@ -34,6 +17,23 @@ export default function DistributorDashboard() {
       setDistributor(JSON.parse(storedDistributor));
     }
   }, []);
+
+  useEffect(() => {
+  const storedDistributor = localStorage.getItem("distributor");
+
+  if (storedDistributor) {
+    const parsedDistributor = JSON.parse(storedDistributor);
+    setDistributor(parsedDistributor);
+
+    // Fetch orders for this distributor
+    fetch(
+      `https://tech-agro-backend.vercel.app/api/orders/distributor/${parsedDistributor._id}`
+    )
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .catch((err) => console.error(err));
+  }
+}, []);
 
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden">
@@ -43,7 +43,6 @@ export default function DistributorDashboard() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#123d2a,_#000)]"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-8">
-
           {/* Welcome Section */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -70,9 +69,7 @@ export default function DistributorDashboard() {
             transition={{ duration: 1.1 }}
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10"
           >
-            <h2 className="text-2xl font-medium mb-8">
-              Machinery Orders
-            </h2>
+            <h2 className="text-2xl font-medium mb-8">Machinery Orders</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
@@ -90,16 +87,16 @@ export default function DistributorDashboard() {
                       key={index}
                       className="border-b border-white/5 hover:bg-white/5 transition"
                     >
-                      <td className="py-5">{order.machine}</td>
-                      <td>{order.date}</td>
+                      <td className="py-5">{order.machinery}</td>
+                      <td>{new Date(order.date).toISOString().split("T")[0]}</td>
                       <td>
                         <span
                           className={`px-4 py-1 rounded-full text-xs uppercase tracking-widest ${
                             order.status === "Delivered"
                               ? "bg-green-500/20 text-green-400"
                               : order.status === "Shipped"
-                              ? "bg-blue-500/20 text-blue-400"
-                              : "bg-yellow-500/20 text-yellow-400"
+                                ? "bg-blue-500/20 text-blue-400"
+                                : "bg-yellow-500/20 text-yellow-400"
                           }`}
                         >
                           {order.status}
