@@ -57,6 +57,7 @@ export default function DistributorForm() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("distributor", JSON.stringify(data.distributor));
+     
 
       navigate("/distributor/dashboard");
     } catch (error) {
@@ -64,6 +65,13 @@ export default function DistributorForm() {
     } finally {
       setLoading(false);
     }
+     if (!isLogin) {
+        if (formData.phone.length !== 10) {
+          setMessage("Phone number must be exactly 10 digits");
+          setLoading(false);
+          return;
+        }
+      }
   };
 
   return (
@@ -117,9 +125,16 @@ export default function DistributorForm() {
                   type="tel"
                   name="phone"
                   value={formData.phone}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // Only digits
+                    if (value.length <= 10) {
+                      setFormData({ ...formData, phone: value });
+                    }
+                  }}
                   placeholder="Phone Number"
                   required
+                  maxLength="10"
+                  pattern="[0-9]{10}"
                   className="w-full px-6 py-4 bg-black/40 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-green-500 transition"
                 />
               </>
