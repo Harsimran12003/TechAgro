@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "http://techagro.co.in/:path*",
+      "destination": "https://www.techagro.co.in/:path*",
+      "permanent": true
+    }
+  ]
+}
