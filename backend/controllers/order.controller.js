@@ -49,6 +49,7 @@ export const deleteOrder = async (req, res) => {
 export const getOrdersByDistributor = async (req, res) => {
   try {
     const { distributorId } = req.params;
+    console.log("Distributor ID from params:", distributorId);
 
     const orders = await Order.find({ distributor: distributorId })
       .populate("distributor", "name");
