@@ -31,8 +31,8 @@ export default function DistributorForm() {
 
     try {
       const url = isLogin
-        ? "https://tech-agro-backend.vercel.app//api/distributors/login"
-        : "https://tech-agro-backend.vercel.app//api/distributors/register";
+        ? "https://tech-agro-backend.vercel.app/api/distributors/login"
+        : "https://tech-agro-backend.vercel.app/api/distributors/register";
 
       const payload = isLogin
         ? {
