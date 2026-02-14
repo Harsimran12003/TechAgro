@@ -69,7 +69,7 @@ export default function Navbar() {
             >
               <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
               <span className="relative z-10 group-hover:text-black transition">
-                Become Distributor
+                Login as Distributor
               </span>
             </Link>
           </div>
