@@ -15,7 +15,7 @@ const products = [
     image: "/rice-1.png",
   },
   {
-    title: "Multi Feeder Chain Harvester",
+    title: "Multi Feeder Chain Harvester 4LZT-7.0ZS",
     power: "102 BHP",
     description:
       "A balanced powerhouse delivering enhanced productivity with advanced engineering and durability.",

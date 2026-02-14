@@ -31,11 +31,7 @@ export default function App() {
 
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsConditions />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/infrastructure" element={<Infrastructure />} />
-        <Route path="/dealers" element={<Dealers />} />
-        <Route path="/contact" element={<Contact />} /> */}
+     
       </Routes>
     </Router>
   );
