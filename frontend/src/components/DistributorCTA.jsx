@@ -34,13 +34,6 @@ export default function DistributorCTA() {
           </span>
         </h2>
 
-        {/* Description */}
-        <p className="mt-10 text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-          Be part of a fast-growing agro-machinery brand. Expand your business
-          with premium products, strong market demand, and a partnership built
-          on trust, growth, and long-term success.
-        </p>
-
         {/* Commission Highlight */}
         <div className="mt-14 flex justify-center">
           <div className="px-10 py-6 rounded-3xl border border-green-500/40 bg-white/5 backdrop-blur-xl">

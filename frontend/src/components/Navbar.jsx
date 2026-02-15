@@ -34,7 +34,7 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="TechAgro"
-              className="h-14 md:h-20 w-27 transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(34,197,94,0.35)]"
+              className="h-12 md:h-20 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(34,197,94,0.35)]"
             />
           </Link>
 
@@ -90,7 +90,7 @@ export default function Navbar() {
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-12">
+        <div className="flex flex-col items-center justify-center h-full gap-8">
           {navLinks.map((link) => {
             let path = "/";
 
@@ -105,16 +105,24 @@ export default function Navbar() {
                 key={link}
                 to={path}
                 onClick={() => setOpen(false)}
-                className="text-2xl uppercase tracking-[0.3em] text-gray-300 hover:text-green-500 transition"
+                className="text-lg sm:text-xl uppercase tracking-[0.2em] text-gray-300 hover:text-green-500 transition"
               >
                 {link}
               </Link>
             );
           })}
 
-          <button className="mt-6 px-10 py-3 border border-green-500 rounded-full text-white uppercase tracking-[0.3em] hover:bg-green-500 hover:text-black transition">
-            Get Quote
-          </button>
+          <div className="flex flex-col items-center gap-4 mt-6">
+            <Link
+              to="/distributors"
+              onClick={() => setOpen(false)}
+              className="px-8 py-2 border border-green-500 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-green-500 hover:text-black transition"
+            >
+              Login as Distributor
+            </Link>
+
+           
+          </div>
         </div>
       </div>
     </>
