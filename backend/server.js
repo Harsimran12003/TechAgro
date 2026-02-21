@@ -14,7 +14,8 @@ const app = express();
 const allowedOrigins = [
   "https://tech-agro.vercel.app",
   "https://www.techagro.co.in",
-  "https://techagro.co.in"
+  "https://techagro.co.in",
+  "http://localhost:5173"
 ];
 
 
