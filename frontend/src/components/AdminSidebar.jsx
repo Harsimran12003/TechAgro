@@ -1,7 +1,14 @@
-import { NavLink , Link} from "react-router-dom";
-import { LayoutDashboard, PlusSquare, ShoppingCart, Users, LogOut } from "lucide-react";
+import { NavLink, Link } from "react-router-dom";
+import {
+  LayoutDashboard,
+  PlusSquare,
+  ShoppingCart,
+  Users,
+  LogOut,
+  X
+} from "lucide-react";
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ sidebarOpen, setSidebarOpen }) {
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
@@ -15,23 +22,53 @@ export default function AdminSidebar() {
     "bg-green-500/20 text-green-400";
 
   return (
-    <div className="w-64 h-screen bg-black border-r border-white/10 fixed left-0 top-0 flex flex-col justify-between">
 
-      {/* Logo */}
+    <div
+      className={`
+       fixed top-0 left-0 z-50 h-screen w-64 bg-black border-r border-white/10
+
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+
+        md:translate-x-0
+      `}
+    >
+
+      {/* Top */}
       <div>
-        <Link to="/" className="flex items-center gap-3 group">
+
+        {/* Mobile close button */}
+        <div className="flex items-center justify-between md:hidden p-4">
+
+          <Link to="/">
+            <img src="/logo.png" className="h-10" />
+          </Link>
+
+          <button onClick={() => setSidebarOpen(false)}>
+            <X size={24} />
+          </button>
+
+        </div>
+
+
+        {/* Desktop Logo */}
+        <div className="hidden md:flex items-center gap-3 p-4">
+
+          <Link to="/">
             <img
               src="/logo.png"
-              alt="TechAgro"
-              className="h-14 md:h-20 w-27 p-3 mb-3 transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(34,197,94,0.35)]"
+              className="h-16"
             />
           </Link>
+
+        </div>
+
 
         {/* Links */}
         <nav className="px-4 space-y-2">
 
           <NavLink
             to="/admin/dashboard"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeClass : ""}`
             }
@@ -40,8 +77,10 @@ export default function AdminSidebar() {
             Dashboard
           </NavLink>
 
+
           <NavLink
             to="/admin/add-order"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeClass : ""}`
             }
@@ -50,8 +89,10 @@ export default function AdminSidebar() {
             Add Order
           </NavLink>
 
+
           <NavLink
             to="/admin/manage-orders"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeClass : ""}`
             }
@@ -60,8 +101,10 @@ export default function AdminSidebar() {
             Manage Orders
           </NavLink>
 
+
           <NavLink
             to="/admin/distributors"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeClass : ""}`
             }
@@ -71,10 +114,13 @@ export default function AdminSidebar() {
           </NavLink>
 
         </nav>
+
       </div>
+
 
       {/* Logout */}
       <div className="p-4">
+
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-red-400 hover:bg-red-500/10"
@@ -82,8 +128,11 @@ export default function AdminSidebar() {
           <LogOut size={18} />
           Logout
         </button>
+
       </div>
 
     </div>
+
   );
+
 }
