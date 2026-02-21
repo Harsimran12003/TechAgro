@@ -21,11 +21,9 @@ export const registerDistributor = async (req, res) => {
       password: hashedPassword,
     });
 
-    const token = jwt.sign(
-      { id: distributor._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: distributor._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.status(201).json({ distributor, token });
   } catch (error) {
@@ -48,13 +46,25 @@ export const loginDistributor = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { id: distributor._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: distributor._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.json({ distributor, token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const approveDistributor = async (req, res) => {
+  try {
+    const distributor = await Distributor.findByIdAndUpdate(
+      req.params.id,
+      { status: "Approved" },
+      { new: true },
+    );
+
+    res.json(distributor);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AdminNavbar from "../components/AdminNavbar";
+import AdminLayout from "./AdminLayout";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -96,8 +97,9 @@ export default function AdminDashboard() {
   };
 
   return (
+    
     <div className="bg-black text-white min-h-screen p-10">
-      <AdminNavbar />
+      <AdminLayout />
 
       <div className="max-w-6xl mx-auto mt-32">
         <div className="flex justify-between mb-10">
