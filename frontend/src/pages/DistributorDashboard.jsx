@@ -22,13 +22,22 @@ export default function DistributorDashboard() {
   const handleSearch = async (value) => {
     setSearch(value);
 
-    if (!value) return;
+    if (!value) {
+      setProducts([]);
+      return;
+    }
 
-    const res = await fetch(`/api/products/search?q=${value}`);
+    try {
+      const res = await fetch(
+        `https://tech-agro-backend.vercel.app/api/products/search?q=${value}`,
+      );
 
-    const data = await res.json();
+      const data = await res.json();
 
-    setProducts(data);
+      setProducts(data);
+    } catch (err) {
+      console.error("Search error:", err);
+    }
   };
 
   const [orders, setOrders] = useState([]);
