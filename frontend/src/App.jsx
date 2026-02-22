@@ -14,7 +14,7 @@ import TermsConditions from "./pages/TermsConditions";
 import AddOrder from "./pages/AddOrder";
 import ManageOrders from "./pages/ManageOrders";
 import ViewDistributors from "./pages/ViewDistributors";
-
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
@@ -35,6 +35,7 @@ export default function App() {
         <Route path="/admin/add-order" element={<AddOrder />} />
         <Route path="/admin/manage-orders" element={<ManageOrders />} />
         <Route path="/admin/distributors" element={<ViewDistributors />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsConditions />} />

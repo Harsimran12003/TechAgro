@@ -6,7 +6,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState([]);
-  
+  const [distributor, setDistributor] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +15,49 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+
+  const updateCart = () => {
+
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    } else {
+      setCart([]);
+    }
+
+  };
+
+  window.addEventListener("storage", updateCart);
+
+  updateCart();
+
+  return () => window.removeEventListener("storage", updateCart);
+
+}, []);
+  useEffect(() => {
+    const storedDistributor = localStorage.getItem("distributor");
+
+    if (storedDistributor) {
+      setDistributor(JSON.parse(storedDistributor));
+    }
+  }, []);
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("distributor");
+    localStorage.removeItem("cart");
+
+    setDistributor(null);
+
+    window.location.href = "/distributors";
+  };
 
   const navLinks = ["Home", "About", "Products", "Distributors", "Contact"];
 
@@ -62,20 +105,51 @@ export default function Navbar() {
                 </li>
               );
             })}
-          </ul>
-          {/* CTA BUTTON */}
-          <div className="hidden md:flex">
-            <Link
-              to="/distributors"
-              className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em] text-white rounded-full border border-green-500/70 overflow-hidden group"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-              <span className="relative z-10 group-hover:text-black transition">
-                Login as Distributor
-              </span>
-            </Link>
-          </div>
+            {distributor && (
+              <li className="relative text-[13px] uppercase tracking-[0.25em] text-gray-300 hover:text-white transition duration-300 group">
+                <Link to="/distributor/dashboard">My Dashboard</Link>
 
+                <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-gradient-to-r from-green-500 to-green-300 transition-all duration-300 group-hover:w-full"></span>
+              </li>
+            )}
+          </ul>
+          {/* Cart */}
+          {distributor && (
+          <Link
+            to="/cart"
+            onClick={() => setOpen(false)}
+            className="hidden md:block px-8 py-2 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-white/10 transition"
+          >
+            Cart ({cart.length})
+          </Link>)}
+          {/* CTA BUTTON */}
+          <div className="hidden md:block">
+            {distributor ? (
+              <button
+                onClick={handleLogout}
+                className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em]
+      text-white rounded-full border border-red-500/70 overflow-hidden group"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+
+                <span className="relative z-10 group-hover:text-black transition">
+                  Logout
+                </span>
+              </button>
+            ) : (
+              <Link
+                to="/distributors"
+                className="relative px-7 py-2.5 text-[13px] uppercase tracking-[0.3em]
+      text-white rounded-full border border-green-500/70 overflow-hidden group"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-300 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+
+                <span className="relative z-10 group-hover:text-black transition">
+                  Login as Distributor
+                </span>
+              </Link>
+            )}
+          </div>
           {/* MOBILE ICON */}
           <button
             className="md:hidden text-white"
@@ -113,16 +187,48 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link to="/cart">Cart ({cart.length})</Link>
-
-          <div className="flex flex-col items-center gap-4 mt-6">
+          {distributor && (
             <Link
-              to="/distributors"
+              to="/distributor/dashboard"
               onClick={() => setOpen(false)}
-              className="px-8 py-2 border border-green-500 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-green-500 hover:text-black transition"
+              className="text-lg sm:text-xl uppercase tracking-[0.2em] text-gray-300 hover:text-green-500 transition"
             >
-              Login as Distributor
+              My Dashboard
             </Link>
+          )}
+          
+          <div className="flex flex-col items-center gap-4 mt-6">
+            {/* Cart */}
+            {distributor && (
+            <Link
+              to="/cart"
+              onClick={() => setOpen(false)}
+              className="px-8 py-2 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-white/10 transition"
+            >
+              Cart ({cart.length})
+            </Link> )}
+
+            {/* Conditional Login / Logout */}
+
+            {distributor ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setOpen(false);
+                }}
+                className="px-8 py-2 border border-red-500 rounded-full text-sm uppercase tracking-[0.2em] text-red-400 hover:bg-red-500 hover:text-black transition"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/distributors"
+                onClick={() => setOpen(false)}
+                className="px-8 py-2 border border-green-500 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-green-500 hover:text-black transition"
+              >
+                Login as Distributor
+              </Link>
+            )}
           </div>
         </div>
       </div>

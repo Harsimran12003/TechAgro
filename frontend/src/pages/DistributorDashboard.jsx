@@ -11,8 +11,19 @@ export default function DistributorDashboard() {
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+  
   const addToCart = (product) => {
-    setCart((prev) => [...prev, product]);
+    const updatedCart = [...cart, product];
+
+    setCart(updatedCart);
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   useEffect(() => {
