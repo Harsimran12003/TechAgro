@@ -17,13 +17,15 @@ export default function DistributorDashboard() {
       setCart(JSON.parse(storedCart));
     }
   }, []);
-  
+
   const addToCart = (product) => {
     const updatedCart = [...cart, product];
 
     setCart(updatedCart);
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    alert(`✅ ${product.partCode} - ${product.name} added to cart successfully`);
+    setCart(JSON.parse(localStorage.getItem("cart")));
   };
 
   useEffect(() => {

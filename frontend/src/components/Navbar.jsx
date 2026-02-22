@@ -120,7 +120,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="hidden md:block px-8 py-2 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-white/10 transition"
           >
-            Cart ({cart.length})
+            Cart 
           </Link>)}
           {/* CTA BUTTON */}
           <div className="hidden md:block">
@@ -205,7 +205,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="px-8 py-2 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] text-white hover:bg-white/10 transition"
             >
-              Cart ({cart.length})
+              Cart 
             </Link> )}
 
             {/* Conditional Login / Logout */}

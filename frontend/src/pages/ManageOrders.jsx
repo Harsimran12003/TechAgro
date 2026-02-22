@@ -155,7 +155,9 @@ export default function ManageOrders() {
           <table className="min-w-[700px] w-full text-sm">
             <thead className="bg-white/5 border-b border-white/10">
               <tr className="text-left uppercase tracking-widest text-gray-400 text-xs">
+                <th className="px-6 py-4">PLM</th>
                 <th className="px-6 py-4">Machinery</th>
+
                 <th className="px-6 py-4">Date</th>
                 <th className="px-6 py-4">Distributor</th>
                 <th className="px-6 py-4">Status</th>
@@ -169,6 +171,11 @@ export default function ManageOrders() {
                   key={order._id}
                   className="border-b border-white/5 hover:bg-white/5 transition"
                 >
+                  <td className="px-6 py-5 text-green-400">
+                    {order.items && order.items.length > 0
+                      ? order.items.map((item) => item.partCode).join(", ")
+                      : "N/A"}
+                  </td>
                   <td className="px-6 py-5 font-medium text-white">
                     {order.machinery}
                   </td>
