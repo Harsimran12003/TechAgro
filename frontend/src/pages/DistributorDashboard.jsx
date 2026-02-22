@@ -8,6 +8,28 @@ export default function DistributorDashboard() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const addToCart = (product) => {
+    setCart((prev) => [...prev, product]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const handleSearch = async (value) => {
+    setSearch(value);
+
+    if (!value) return;
+
+    const res = await fetch(`/api/products/search?q=${value}`);
+
+    const data = await res.json();
+
+    setProducts(data);
+  };
 
   const [orders, setOrders] = useState([]);
 
@@ -19,21 +41,21 @@ export default function DistributorDashboard() {
   }, []);
 
   useEffect(() => {
-  const storedDistributor = localStorage.getItem("distributor");
+    const storedDistributor = localStorage.getItem("distributor");
 
-  if (storedDistributor) {
-    const parsedDistributor = JSON.parse(storedDistributor);
-    setDistributor(parsedDistributor);
+    if (storedDistributor) {
+      const parsedDistributor = JSON.parse(storedDistributor);
+      setDistributor(parsedDistributor);
 
-    // Fetch orders for this distributor
-    fetch(
-      `https://tech-agro-backend.vercel.app/api/orders/distributor/${parsedDistributor._id}`
-    )
-      .then((res) => res.json())
-      .then((data) => setOrders(data))
-      .catch((err) => console.error(err));
-  }
-}, []);
+      // Fetch orders for this distributor
+      fetch(
+        `https://tech-agro-backend.vercel.app/api/orders/distributor/${parsedDistributor._id}`,
+      )
+        .then((res) => res.json())
+        .then((data) => setOrders(data))
+        .catch((err) => console.error(err));
+    }
+  }, []);
 
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden">
@@ -61,6 +83,67 @@ export default function DistributorDashboard() {
               </span>
             </h1>
           </motion.div>
+          {/* Authorization Status Card */}
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className={`mb-10 p-6 rounded-2xl border backdrop-blur-xl
+
+    ${
+      distributor?.status === "Approved"
+        ? "bg-green-500/10 border-green-500/30"
+        : "bg-yellow-500/10 border-yellow-500/30"
+    }
+
+  `}
+          >
+            {distributor?.status === "Approved" ? (
+              <p className="text-green-400 font-medium">
+                ✅ You are an Authorized Distributor
+              </p>
+            ) : (
+              <p className="text-yellow-400 font-medium">
+                ⏳ Your authorization is pending. Please wait for admin
+                approval.
+              </p>
+            )}
+          </motion.div>
+
+          {distributor?.status === "Approved" && (
+            <div className="bg-white/5 p-6 rounded-2xl mb-8">
+              <h3 className="text-xl mb-4">Search Products</h3>
+
+              <input
+                type="text"
+                placeholder="Enter Part Code..."
+                value={search}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="w-full p-3 bg-black border border-white/10 rounded-xl"
+              />
+            </div>
+          )}
+
+          {products.map((product) => (
+            <div
+              key={product._id}
+              className="flex justify-between items-center bg-white/5 p-4 rounded-xl mb-3"
+            >
+              <div>
+                <p className="text-green-400">{product.partCode}</p>
+
+                <p>{product.name}</p>
+              </div>
+
+              <button
+                onClick={() => addToCart(product)}
+                className="bg-green-500 text-black px-4 py-2 rounded-xl"
+              >
+                Add to Cart
+              </button>
+            </div>
+          ))}
 
           {/* Orders Table */}
           <motion.div
@@ -88,7 +171,9 @@ export default function DistributorDashboard() {
                       className="border-b border-white/5 hover:bg-white/5 transition"
                     >
                       <td className="py-5">{order.machinery}</td>
-                      <td>{new Date(order.date).toISOString().split("T")[0]}</td>
+                      <td>
+                        {new Date(order.date).toISOString().split("T")[0]}
+                      </td>
                       <td>
                         <span
                           className={`px-4 py-1 rounded-full text-xs uppercase tracking-widest ${

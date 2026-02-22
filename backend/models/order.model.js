@@ -15,13 +15,19 @@ const orderSchema = new mongoose.Schema(
       ref: "Distributor",
       required: true,
     },
+    items: [
+      {
+        partCode: String,
+        name: String,
+      },
+    ],
     status: {
       type: String,
       enum: ["Placed", "Shipped", "Out for Delivery", "Delivered"],
       default: "Placed",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Order", orderSchema);

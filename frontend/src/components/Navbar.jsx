@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,6 +113,7 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <Link to="/cart">Cart ({cart.length})</Link>
 
           <div className="flex flex-col items-center gap-4 mt-6">
             <Link
@@ -120,8 +123,6 @@ export default function Navbar() {
             >
               Login as Distributor
             </Link>
-
-           
           </div>
         </div>
       </div>

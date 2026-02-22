@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
 
 export default function ManageOrders() {
-
   const navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
@@ -46,7 +45,6 @@ export default function ManageOrders() {
 
   /* Edit handler */
   const handleEdit = (order) => {
-
     setForm({
       machinery: order.machinery,
       date: order.date.split("T")[0],
@@ -59,7 +57,6 @@ export default function ManageOrders() {
 
   /* Update */
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     await fetch(
@@ -70,7 +67,7 @@ export default function ManageOrders() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(form),
-      }
+      },
     );
 
     setEditingId(null);
@@ -80,13 +77,9 @@ export default function ManageOrders() {
 
   /* Delete */
   const handleDelete = async (id) => {
-
-    await fetch(
-      `https://tech-agro-backend.vercel.app/api/orders/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    await fetch(`https://tech-agro-backend.vercel.app/api/orders/${id}`, {
+      method: "DELETE",
+    });
 
     fetchOrders();
   };
@@ -94,27 +87,18 @@ export default function ManageOrders() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-
   return (
-
     <AdminLayout>
-
       <div className="max-w-6xl">
-
-        <h1 className="text-3xl mb-8">
-          Manage Orders
-        </h1>
-
+        <h1 className="text-3xl mb-8">Manage Orders</h1>
 
         {/* EDIT FORM (only visible when editing) */}
 
         {editingId && (
-
           <form
             onSubmit={handleSubmit}
             className="bg-white/5 p-8 rounded-3xl space-y-4 mb-12"
           >
-
             <input
               name="machinery"
               value={form.machinery}
@@ -136,8 +120,7 @@ export default function ManageOrders() {
               onChange={handleChange}
               className="w-full px-6 py-4 bg-black border border-white/10 rounded-xl text-white"
             >
-
-              {distributors.map(d => (
+              {distributors.map((d) => (
                 <option
                   key={d._id}
                   value={d._id}
@@ -146,7 +129,6 @@ export default function ManageOrders() {
                   {d.name}
                 </option>
               ))}
-
             </select>
 
             <select
@@ -164,109 +146,82 @@ export default function ManageOrders() {
             <button className="bg-green-500 px-8 py-3 text-black rounded-full">
               Update Order
             </button>
-
           </form>
-
         )}
-
 
         {/* EXACT SAME TABLE */}
 
-        <table className="w-full text-sm">
+        <div className="w-full overflow-x-auto">
+          <table className="min-w-[700px] w-full text-sm">
+            <thead className="bg-white/5 border-b border-white/10">
+              <tr className="text-left uppercase tracking-widest text-gray-400 text-xs">
+                <th className="px-6 py-4">Machinery</th>
+                <th className="px-6 py-4">Date</th>
+                <th className="px-6 py-4">Distributor</th>
+                <th className="px-6 py-4">Status</th>
+                <th className="px-6 py-4 text-right">Actions</th>
+              </tr>
+            </thead>
 
-          <thead className="bg-white/5 border-b border-white/10">
+            <tbody>
+              {orders.map((order) => (
+                <tr
+                  key={order._id}
+                  className="border-b border-white/5 hover:bg-white/5 transition"
+                >
+                  <td className="px-6 py-5 font-medium text-white">
+                    {order.machinery}
+                  </td>
 
-            <tr className="text-left uppercase tracking-widest text-gray-400 text-xs">
+                  <td className="px-6 py-5 text-gray-300">
+                    {new Date(order.date).toISOString().split("T")[0]}
+                  </td>
 
-              <th className="px-6 py-4">Machinery</th>
-              <th className="px-6 py-4">Date</th>
-              <th className="px-6 py-4">Distributor</th>
-              <th className="px-6 py-4">Status</th>
-              <th className="px-6 py-4 text-right">Actions</th>
+                  <td className="px-6 py-5 text-gray-300">
+                    {order.distributor?.name}
+                  </td>
 
-            </tr>
-
-          </thead>
-
-
-          <tbody>
-
-            {orders.map((order) => (
-
-              <tr
-                key={order._id}
-                className="border-b border-white/5 hover:bg-white/5 transition"
-              >
-
-                <td className="px-6 py-5 font-medium text-white">
-                  {order.machinery}
-                </td>
-
-                <td className="px-6 py-5 text-gray-300">
-                  {new Date(order.date).toISOString().split("T")[0]}
-                </td>
-
-                <td className="px-6 py-5 text-gray-300">
-                  {order.distributor?.name}
-                </td>
-
-
-                <td className="px-6 py-5">
-
-                  <span
-                    className={`px-4 py-1 rounded-full text-xs uppercase tracking-widest font-medium
+                  <td className="px-6 py-5">
+                    <span
+                      className={`px-4 py-1 rounded-full text-xs uppercase tracking-widest font-medium
 
                       ${
                         order.status === "Delivered"
                           ? "bg-green-500/20 text-green-400"
                           : order.status === "Shipped"
-                          ? "bg-blue-500/20 text-blue-400"
-                          : order.status === "Out for Delivery"
-                          ? "bg-purple-500/20 text-purple-400"
-                          : "bg-yellow-500/20 text-yellow-400"
+                            ? "bg-blue-500/20 text-blue-400"
+                            : order.status === "Out for Delivery"
+                              ? "bg-purple-500/20 text-purple-400"
+                              : "bg-yellow-500/20 text-yellow-400"
                       }
 
                     `}
-                  >
+                    >
+                      {order.status}
+                    </span>
+                  </td>
 
-                    {order.status}
+                  <td className="px-6 py-5 text-right space-x-4">
+                    <button
+                      onClick={() => handleEdit(order)}
+                      className="text-yellow-400 hover:text-yellow-300 transition font-medium"
+                    >
+                      Edit
+                    </button>
 
-                  </span>
-
-                </td>
-
-
-                <td className="px-6 py-5 text-right space-x-4">
-
-                  <button
-                    onClick={() => handleEdit(order)}
-                    className="text-yellow-400 hover:text-yellow-300 transition font-medium"
-                  >
-                    Edit
-                  </button>
-
-
-                  <button
-                    onClick={() => handleDelete(order._id)}
-                    className="text-red-400 hover:text-red-300 transition font-medium"
-                  >
-                    Delete
-                  </button>
-
-                </td>
-
-              </tr>
-
-            ))}
-
-          </tbody>
-
-        </table>
-
+                    <button
+                      onClick={() => handleDelete(order._id)}
+                      className="text-red-400 hover:text-red-300 transition font-medium"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-
     </AdminLayout>
-
   );
-
 }
