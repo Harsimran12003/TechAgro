@@ -60,13 +60,30 @@ export default function AddOrder() {
       ? `https://tech-agro-backend.vercel.app/api/orders/${editingId}`
       : "https://tech-agro-backend.vercel.app/api/orders";
 
+    // Convert machinery text into items array
+    const bodyData = editingId
+      ? form
+      : {
+          distributorId: form.distributor,
+          items: [
+            {
+              partCode: "ADMIN",
+              name: form.machinery,
+            },
+          ],
+        };
+
     await fetch(url, {
       method,
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify(bodyData),
     });
+
+    alert(
+      editingId ? "Order updated successfully" : "Order added successfully",
+    );
 
     setForm({
       machinery: "",

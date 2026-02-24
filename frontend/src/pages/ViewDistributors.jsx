@@ -10,6 +10,20 @@ export default function ViewDistributors() {
       .then((data) => setDistributors(data));
   };
 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this distributor?",
+    );
+
+    if (!confirmDelete) return;
+
+    await fetch(`https://tech-agro-backend.vercel.app/api/distributors/${id}`, {
+      method: "DELETE",
+    });
+
+    fetchDistributors();
+  };
+
   useEffect(() => {
     fetchDistributors();
   }, []);
@@ -84,7 +98,7 @@ export default function ViewDistributors() {
 
                     {/* Action */}
 
-                    <td className="px-6 py-5 text-right">
+                    <td className="px-6 py-5 text-right space-x-3">
                       {d.status === "Approved" ? (
                         <span className="text-green-400 font-medium">
                           Approved
@@ -97,6 +111,13 @@ export default function ViewDistributors() {
                           Approve
                         </button>
                       )}
+
+                      <button
+                        onClick={() => handleDelete(d._id)}
+                        className="bg-red-500 hover:bg-red-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}

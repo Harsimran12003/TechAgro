@@ -92,17 +92,7 @@ export default function Footer() {
         {/* BOTTOM FOOTER */}
         <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-400 text-sm">
           <p>© {new Date().getFullYear()} Tech Agro. All rights reserved.</p>
-          <p>
-            Powered by{" "}
-            <a
-              href="https://www.excellencegroupofinstitutes.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className=" hover:text-white transition  "
-            >
-              Foxstride Media Excellence Web Services
-            </a>
-          </p>
+          
 
           <div className="flex gap-8 uppercase tracking-widest text-xs">
             <Link to="/privacy-policy" className="hover:text-white transition">
