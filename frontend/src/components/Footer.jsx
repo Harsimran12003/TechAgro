@@ -68,13 +68,13 @@ export default function Footer() {
 
               <li>
                 <Link to="/products?model=88bhp" className="hover:text-white transition">
-                  88 BHP Harvester
+                  Rice Transplanter Crop Line 625
                 </Link>
               </li>
 
               <li>
                 <Link to="/products?model=102bhp" className="hover:text-white transition">
-                  102 BHP Harvester
+                  102 HP Agro King
                 </Link>
               </li>
 

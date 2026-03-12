@@ -55,6 +55,7 @@ export default function ViewDistributors() {
                   <th className="px-6 py-4">Name</th>
 
                   <th className="px-6 py-4">Email</th>
+                  <th className="px-6 py-4">Phone</th>
 
                   <th className="px-6 py-4">Status</th>
 
@@ -77,6 +78,7 @@ export default function ViewDistributors() {
                     {/* Email */}
 
                     <td className="px-6 py-5 text-gray-300">{d.email}</td>
+                    <td className="px-6 py-5 text-gray-300">{d.phone}</td>
 
                     {/* Status */}
 

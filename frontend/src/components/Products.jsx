@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 
 const products = [
   {
-    title: "Rice Transplanter 2ZG-6D",
+    title: "Rice Transplanter Crop Line 625",
     power: "24.2 BHP",
     description:
       "A compact yet powerful harvester engineered for efficiency, reliability, and consistent field performance.",
     image: "./rice-1.png",
   },
   {
-    title: "Multi Feeder Chain Harvester 4LZT-7.0ZS",
+    title: "102 HP Agro King",
     power: "102 BHP",
     description:
       "A balanced powerhouse delivering enhanced productivity with advanced engineering and durability.",
     image: "./harvester-102-1.png",
   },
   {
-    title: "Multi Feeder Chain Harvester",
+    title: "120 HP Multi-Crop Harvester",
     power: "120 HP",
     description:
       "Our flagship high-performance harvester built for large-scale operations and maximum output.",

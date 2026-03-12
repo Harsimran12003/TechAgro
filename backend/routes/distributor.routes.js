@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/register", registerDistributor);
 router.post("/login", loginDistributor);
 router.get("/", async (req, res) => {
-  const distributors = await Distributor.find().select("name email status");
+  const distributors = await Distributor.find().select("name email phone status");
   res.json(distributors);
 });
 router.put("/approve/:id", approveDistributor);
